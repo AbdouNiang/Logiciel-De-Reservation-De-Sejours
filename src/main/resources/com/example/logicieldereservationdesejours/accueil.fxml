@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="buttonMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="764.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.logicieldereservationdesejours.AccueilController">
+   <children>
+      <MenuButton layoutX="904.0" layoutY="14.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="98.0">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Profil" />
+          <MenuItem mnemonicParsing="false" text="Messagerie" />
+            <MenuItem mnemonicParsing="false" text="Deconnexion" />
+        </items>
+      </MenuButton>
+      <Button fx:id="connexion" layoutX="797.0" layoutY="30.0" mnemonicParsing="false" onAction="#connexion" prefHeight="34.0" prefWidth="98.0" text="Connexion" />
+      <Pane layoutX="6.0" layoutY="332.0" prefHeight="134.0" prefWidth="934.0">
+         <children>
+            <DatePicker fx:id="debut_sejour" layoutX="280.0" layoutY="46.0" prefHeight="34.0" prefWidth="175.0" promptText="Début Séjour" />
+            <DatePicker fx:id="fin_sejour" layoutX="515.0" layoutY="46.0" prefHeight="34.0" prefWidth="175.0" promptText="Fin Séjour" />
+            <TextField fx:id="txtRecherche" layoutX="36.0" layoutY="46.0" prefHeight="34.0" prefWidth="199.0" promptText="Destination, service, logement ..." />
+            <Button fx:id="rechercher" layoutX="768.0" layoutY="46.0" mnemonicParsing="false" onAction="#onSearchButtonClick" prefHeight="34.0" prefWidth="132.0" text="Recherche" />
+         </children>
+      </Pane>
+      <Label layoutX="242.0" layoutY="88.0" prefHeight="47.0" prefWidth="462.0" text=" Bienvenue Dans la Téranga Hotel" textAlignment="CENTER">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="im1" fitHeight="134.0" fitWidth="222.0" layoutX="62.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="https://static.service-voyages.com/photos/vacances-senegal/dakar/facade-le-saly-hotel_480603_pgbighd.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="im2" fitHeight="134.0" fitWidth="260.0" layoutX="327.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="https://static.service-voyages.com/photos/vacances-senegal/dakar/chambre-le-saly-hotel_480591_pgbighd.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="im4" fitHeight="134.0" fitWidth="252.0" layoutX="604.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="https://static.service-voyages.com/photos/vacances-senegal/dakar/spa-le-saly-hotel_480599_pgbighd.jpg/photos/vacances-senegal/dakar/chambre-le-saly-hotel_480591_pgbighd.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgLogo" fitHeight="84.0" fitWidth="98.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../java/com/example/logicieldereservationdesejours/images/logoTéranga.PNG" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
