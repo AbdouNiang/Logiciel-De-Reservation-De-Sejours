@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.logicieldereservationdesejours.controllers.SearchController">
+    <children>
+        <Pane fx:id="contact" layoutY="664.0" prefHeight="50.0" prefWidth="1280.0" style="-fx-border-color: black;" styleClass="-fx-border-color" AnchorPane.bottomAnchor="0.0">
+            <children>
+                <Label layoutX="14.0" layoutY="15.0" text="Contact : adeona@woofing.fr" />
+            </children>
+        </Pane>
+        <Button fx:id="hote" layoutX="1064.0" layoutY="26.0" mnemonicParsing="false" text="Devenir hôte" />
+        <Pane layoutX="149.0" layoutY="75.0" prefHeight="59.0" prefWidth="1000.0" style="-fx-border-color: black;" styleClass="-fx-border-color">
+            <children>
+                <DatePicker fx:id="debut_sejour" layoutX="340.0" layoutY="17.0" promptText="Début du séjour" />
+                <DatePicker fx:id="fin_séjour" layoutX="570.0" layoutY="17.0" promptText="Fin du séjour" />
+                <Button fx:id="rechercher" layoutX="872.0" layoutY="17.0" mnemonicParsing="false" text="Rechercher" />
+                <TextField fx:id="txtf_rechercher_voyage" layoutX="52.0" layoutY="17.0" promptText="Rechercher" />
+            </children></Pane>
+        <HBox layoutX="19.0" layoutY="156.0" prefHeight="50.0" prefWidth="1242.0" spacing="20.0">
+            <children>
+                <MenuButton mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" text="Contrepartie">
+                    <items>
+                        <CheckMenuItem mnemonicParsing="false" text="Unspecified Action" />
+                        <CheckMenuItem mnemonicParsing="false" text="Unspecified Action" />
+                        <CheckMenuItem mnemonicParsing="false" text="Unspecified Action" />
+                    </items>
+                </MenuButton>
+                <MenuButton mnemonicParsing="false" prefWidth="190.0" text="Heures/j">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                </MenuButton>
+                <MenuButton mnemonicParsing="false" prefWidth="190.0" text="Type de logement">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                </MenuButton>
+                <MenuButton mnemonicParsing="false" prefWidth="190.0" text="Voyageurs">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                </MenuButton>
+                <MenuButton mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" text="Restauration">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                </MenuButton>
+                <MenuButton mnemonicParsing="false" prefWidth="190.0" text="Autres options">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                </MenuButton>
+            </children>
+        </HBox>
+        <ImageView fx:id="map" fitHeight="464.0" fitWidth="620.0" layoutX="640.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../../java/com/example/logicieldereservationdesejours/images/map.png" />
+            </image></ImageView>
+        <ScrollPane hbarPolicy="NEVER" layoutX="20.0" layoutY="206.0" prefHeight="464.0" prefWidth="620.0" vbarPolicy="NEVER">
+            <VBox fx:id="tripListView" layoutX="14.0" layoutY="14.0" prefHeight="460.0" prefWidth="616.0" />
+        </ScrollPane>
+    </children>
+</AnchorPane>
