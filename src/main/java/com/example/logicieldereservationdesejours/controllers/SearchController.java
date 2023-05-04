@@ -103,7 +103,7 @@ public class SearchController {
         }
 
 
-        //System.out.println("voyage");
+        System.out.println("voyage");
         return voyages;
 
     }
