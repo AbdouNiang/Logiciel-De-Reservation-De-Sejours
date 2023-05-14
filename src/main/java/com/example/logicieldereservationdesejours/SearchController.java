@@ -1,11 +1,11 @@
 package com.example.logicieldereservationdesejours;
 
-import com.example.logicieldereservationdesejours.Main;
 import com.example.logicieldereservationdesejours.models.Voyage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,62 +15,75 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
-public class SearchController {
-
-    @FXML
-    private Button bouton_accueil;
+public class SearchController  {
 
     @FXML
     private Pane contact;
 
     @FXML
-    private DatePicker debut_sejour2;
+    private DatePicker debut_sejour;
 
     @FXML
-    private DatePicker fin_sejour2;
+    private DatePicker fin_séjour;
 
     @FXML
     private Button hote;
+    @FXML
+    private MenuButton menuAutresOptions;
 
     @FXML
-    private ImageView imgMap;
+    private MenuButton menuContreparties;
 
     @FXML
-    private ScrollPane paneResults;
+    private MenuButton menuHeures;
+
+    @FXML
+    private MenuButton menuRestauration;
+
+    @FXML
+    private MenuButton menuTypeLogement;
+
+    @FXML
+    private MenuButton menuVoyageurs;
+
 
     @FXML
     private Button rechercher;
 
-    @FXML
-    private VBox tripListView;
+
 
     @FXML
-    private TextField txtRecherche2;
+    private TextField txtf_rechercher_voyage;
 
-    @FXML
-    private Text txtResults;
+    @FXML private TextField txtDestination2;
+    @FXML private TextField txtRecherche2;
+    @FXML private DatePicker debut_sejour2;
+    @FXML private DatePicker fin_sejour2;
+    @FXML private Text txtWarning2;
 
-    @FXML
-    private Text txtWarning2;
-
-    @FXML
-    void goToAccueil(ActionEvent event) {
-
-    }
+    @FXML private VBox tripListView = null;
+    @FXML private ImageView imgMap;
+    @FXML private ScrollPane paneResults;
+    @FXML private Text txtResults;
 
 
     private ArrayList<Voyage> listAllVoyages;
     private ArrayList<Voyage> listVoyagesResults2;
+
+
+
 
     public void init() {
         setMap();
@@ -80,6 +93,7 @@ public class SearchController {
             searchVoyages();
         });
 
+
     }
 
     public void updateUI(){
@@ -87,29 +101,32 @@ public class SearchController {
         initialiseResultsPane();
     }
     public void setMap(){
-        File file = new File("com/example/logicieldereservationdesejours/images/map.png");
+        File file = new File("src/main/java/com/example/logicieldereservationdesejours/assets/map.png");
         Image image = new Image(file.toURI().toString());
         imgMap.setImage(image);
     }
 
+
+
+
     public void handleResultsQty(){
         // gère le nombre de résultats
-        if (listVoyagesResults2.size() == 0) txtResults.setText("Désolé, aucun résultat n'a été trouvé...");
+        if (listVoyagesResults2.size() == 0) txtResults.setText("Désolé, nous n'avons trouvé aucun résultat...");
         else txtResults.setText(listVoyagesResults2.size() + " séjours peuvent vous satisfaire");
         imgMap.setVisible(listVoyagesResults2.size() != 0);
         paneResults.setVisible(listVoyagesResults2.size() != 0);
     }
-
     public void initialiseResultsPane(){
         tripListView.getChildren().clear();
+
         if (listVoyagesResults2.size() > 0){
-            Node[] nodes = new Node[5];
+            Node[] nodes = new Node[10];
 
             // initialize graphics
             for (int i=0; i<nodes.length && i < listVoyagesResults2.size();i++){
                 try{
                     final int index=i;
-                    nodes[i] = FXMLLoader.load(Main.class.getResource("trip-card-view.fxml"));
+                    nodes[i] = FXMLLoader.load(Main.class.getResource("card-view.fxml"));
                     nodes[i].setStyle("-fx-border-color: lightgrey");
 
                     // bind data
@@ -119,7 +136,7 @@ public class SearchController {
                     Label logement = (Label) nodes[i].lookup("#logement");
                     Label heures = (Label) nodes[i].lookup("#heures");
 
-                    File file = new File("com/example/logicieldereservationdesejours/images/villes/"+ listVoyagesResults2.get(i).getVille() +".png");
+                    File file = new File("src/main/java/com/example/logicieldereservationdesejours/assets/images/ville/"+ listVoyagesResults2.get(i).getVille() +".png");
                     Image image = new Image(file.toURI().toString());
                     iv.setImage(image);
                     titre.setText(listVoyagesResults2.get(i).getContreparties() + " à " + listVoyagesResults2.get(i).getVille());
@@ -140,7 +157,7 @@ public class SearchController {
                     nodes[i].setOnMouseClicked((new EventHandler<MouseEvent>() {
                         public void handle(MouseEvent event) {
                             System.out.println("VoyageIndex: " + voyageIndex);
-                            //navigateToDetailVoyageView(listVoyagesResults2.get(voyageIndex), event);
+                            navigateToDetailVoyageView(listVoyagesResults2.get(voyageIndex), event);
                         }
                     }));
 
@@ -153,6 +170,7 @@ public class SearchController {
         }
 
     }
+
     public void setListVoyagesResults(ArrayList<Voyage> listVoyagesResults2) {
         this.listVoyagesResults2 = listVoyagesResults2;
     }
@@ -177,6 +195,7 @@ public class SearchController {
     public void onSearchButtonClick2(ActionEvent event) throws IOException {
         searchVoyages();
     }
+    private ArrayList<Voyage> listVoyagesResults;
 
     public void searchVoyages(){
         if (txtRecherche2.getText().length() > 1) {
@@ -188,8 +207,80 @@ public class SearchController {
         } else {
             displayWarning();
         }
+        /*listVoyagesResults = new ArrayList<>();
+        String contreparties = getMenuSelection(menuContreparties);
+        String heures = getMenuSelection(menuHeures);
+        //String logement = getMenuSelection(menuLogement);
 
+        for (Voyage voyage : listAllVoyages) {
+            if (isVoyageMatchingCriteria(voyage, contreparties, heures)) {
+                listVoyagesResults.add(voyage);
+            }
+        }
+        updateResultsPane();*/
     }
+    private boolean isVoyageMatchingCriteria(Voyage voyage, String contreparties, String heures) {
+        return (contreparties.isEmpty() || voyage.getContreparties().contains(contreparties))
+                && (heures.isEmpty() || voyage.getHeure().contains(heures));
+    }
+    private String getMenuSelection(MenuButton menuButton) {
+        for (MenuItem item : menuButton.getItems()) {
+            if (item instanceof CheckMenuItem) {
+                CheckMenuItem checkItem = (CheckMenuItem) item;
+                if (checkItem.isSelected()) {
+                    return checkItem.getText();
+                }
+            }
+        }
+        return "";
+    }
+
+    /*private void updateResultsPane() {
+        tripListView.getChildren().clear();
+
+        if (listVoyagesResults.size() > 0) {
+            for (Voyage voyage : listVoyagesResults) {
+                String contreparties = getMenuSelection(menuContreparties);
+                String heures = getMenuSelection(menuHeures);
+                String logement = getMenuSelection(menuTypeLogement);
+
+                // Vérifier si les critères de recherche sont présents dans les listes du voyage
+                if (isCriteriaPresent(voyage, contreparties, heures, logement)) {
+                    String imagePath = "src/main/java/com/example/logicieldereservationdesejours/assets/images/ville/" + voyage.getVille() + ".png";
+                    InputStream stream = getClass().getClassLoader().getResourceAsStream(imagePath);
+                    Image image = new Image(stream);
+
+                    ImageView iv = new ImageView(image);
+                    iv.setFitWidth(200);
+                    iv.setPreserveRatio(true);
+
+                    Label cityLabel = new Label("Ville: " + voyage.getVille());
+                    cityLabel.setFont(Font.font("Arial", 12));
+
+                    VBox vbox = new VBox(iv, cityLabel);
+                    vbox.setSpacing(10);
+                    vbox.setAlignment(Pos.CENTER);
+
+                    tripListView.getChildren().add(vbox);
+
+
+
+                    System.out.println("Contreparties sélectionnées : " + contreparties);
+                    System.out.println("Heures sélectionnées : " + heures);
+                    System.out.println("Type de logement sélectionné : " + logement);
+                }
+            }
+        } else {
+            System.out.println("Aucun voyage trouvé.");
+        }
+    }*/
+    private boolean isCriteriaPresent(Voyage voyage, String contreparties, String heures, String logement) {
+        return (contreparties.isEmpty() || voyage.getContreparties().contains(contreparties))
+                && (heures.isEmpty() || voyage.getHeure().contains(heures))
+                && (logement.isEmpty() || voyage.getType().contains(logement));
+    }
+
+
     public ArrayList<Voyage> searchVoyagesResults2() {
         System.out.println(this.txtRecherche2.getText());
         if (debut_sejour2.getValue() != null) System.out.println(this.debut_sejour2.getValue());
@@ -221,7 +312,6 @@ public class SearchController {
         System.out.println(results.size());
         return results;
     }
-
     public void displayWarning(){
         txtWarning2.setVisible(true);
         new Thread( new Runnable() {
@@ -232,10 +322,11 @@ public class SearchController {
             }
         } ).start();
     }
-   /* public void goToAccueil(ActionEvent event) throws IOException {
+
+    public void goToAccueil(ActionEvent event) throws IOException {
         try {
             System.out.println("Vous êtes sur la page d'accueil");
-            Parent Accueil = FXMLLoader.load(getClass().getResource("src/main/resources/com/example/application/Accueil.fxml"));
+            Parent Accueil = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
             Scene AccueilScene = new Scene(Accueil);
 
             Stage settStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -245,8 +336,28 @@ public class SearchController {
         catch (Exception e) {
             System.err.println(e.getLocalizedMessage());
         }
-    }*/
+    }
 
+    public void navigateToDetailVoyageView(Voyage v, MouseEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("voyage-detail-view.fxml"));
+        Parent root = null;
+        try {
+            root = (Parent) fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        DetailVoyageController detailVoyageController = (DetailVoyageController) fxmlLoader.getController();
+        detailVoyageController.setVoyage(v);
+        detailVoyageController.init();
 
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void setTxtRecherche2(TextField txtRecherche) {
+    }
 }

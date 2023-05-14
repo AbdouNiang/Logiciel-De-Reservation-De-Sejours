@@ -3,7 +3,11 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -16,7 +20,6 @@
             <Label layoutX="29.0" layoutY="13.0" prefHeight="23.0" prefWidth="165.0" text="Contact : @niang" />
          </children>
       </Pane>
-      <Button fx:id="hote" layoutX="1064.0" layoutY="26.0" mnemonicParsing="false" text="Devenir hôte" />
       <Pane layoutX="140.0" layoutY="476.0" prefHeight="94.0" prefWidth="1000.0" style="-fx-border-color: black;" styleClass="-fx-border-color">
          <children>
             <DatePicker fx:id="debut_sejour" layoutX="340.0" layoutY="32.0" promptText="Début du séjour" />
@@ -25,14 +28,39 @@
             <TextField fx:id="txtRecherche" layoutX="52.0" layoutY="32.0" prefHeight="25.0" prefWidth="232.0" promptText="Destination, contrepartie, logement ..." />
             <Text fx:id="txtWarning" fill="RED" layoutX="52.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez saisir au moins 2 caractères" visible="false" wrappingWidth="249.13671875" />
          </children></Pane>
-      <Label layoutX="334.0" layoutY="119.0" prefHeight="87.0" prefWidth="752.0" text="La plateforme d'échange et de volontariat nomade">
+      <Label layoutX="450.0" layoutY="150.0" prefHeight="87.0" prefWidth="363.0" text=" Bienvenue Dans la Téranga Hotel">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
       <Button fx:id="bouton_accueil" layoutX="56.0" layoutY="69.0" mnemonicParsing="false" onAction="#goToAccueil" text="Accueil" />
-      <Button fx:id="connexion" layoutX="1184.0" layoutY="26.0" mnemonicParsing="false" onAction="#connexion" text="Connexion" />
-      <Button layoutX="1185.0" layoutY="56.0" mnemonicParsing="false" text="Inscription" />
-      <Button fx:id="proposerVoyage" layoutX="1168.0" layoutY="88.0" mnemonicParsing="false" onAction="#proposerVoyage" text="Proposer voyage" />
+      <ImageView fitHeight="179.0" fitWidth="278.0" layoutX="181.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="https://static.service-voyages.com/photos/vacances-senegal/dakar/facade-le-saly-hotel_480603_pgbighd.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="179.0" fitWidth="283.0" layoutX="498.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="https://static.service-voyages.com/photos/vacances-senegal/dakar/chambre-le-saly-hotel_480591_pgbighd.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="179.0" fitWidth="314.0" layoutX="816.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="https://static.service-voyages.com/photos/vacances-senegal/dakar/spa-le-saly-hotel_480599_pgbighd.jpg/photos/vacances-senegal/dakar/chambre-le-saly-hotel_480591_pgbighd.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="55.0" fitWidth="72.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/logo.PNG" />
+         </image>
+      </ImageView>
+      <MenuButton layoutX="1161.0" layoutY="26.0" mnemonicParsing="false" text="MenuButton">
+        <items>
+          <MenuItem fx:id="connex" mnemonicParsing="false" onAction="#connex" text="Connexion" />
+          <MenuItem mnemonicParsing="false" text="Messagerie" />
+            <MenuItem mnemonicParsing="false" text="Déconnexion" />
+            <MenuItem fx:id="connex1" mnemonicParsing="false" onAction="#connex" text="Devenir hôte" />
+        </items>
+      </MenuButton>
    </children>
 </AnchorPane>

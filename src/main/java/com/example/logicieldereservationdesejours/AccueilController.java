@@ -1,6 +1,5 @@
 package com.example.logicieldereservationdesejours;
 
-import com.example.logicieldereservationdesejours.controllers.SearchController;
 import com.example.logicieldereservationdesejours.models.Voyage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,14 +8,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.scene.control.DateCell;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -30,7 +26,8 @@ import java.util.ResourceBundle;
 
 public class AccueilController implements Initializable {
 
-
+    @FXML
+    private MenuItem connex;
     @FXML
     private Pane contact;
     @FXML private TextField txtf_rechercher_voyage;
@@ -51,6 +48,7 @@ public class AccueilController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         contact.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 
+
         // get all voyages
         listAllVoyages = this.getAllVoyages();
         // init datepickers
@@ -67,6 +65,7 @@ public class AccueilController implements Initializable {
                 }
             }
         });
+
     }
     @FXML
     protected void onSearchButtonClick(ActionEvent event) throws IOException {
@@ -114,7 +113,7 @@ public class AccueilController implements Initializable {
                         values[8],
                         values[9]
                 );
-                System.out.println(voyage);
+              //  System.out.println(voyage);
                 voyages.add(voyage);
             }
         } catch (IOException e) {
@@ -194,6 +193,16 @@ public class AccueilController implements Initializable {
         }
         catch (Exception e) {
             System.err.println(e.getLocalizedMessage());
+        }
+    }
+    public void connex(){
+        Scene scene = connex.getParentPopup().getOwnerWindow().getScene();
+        try {
+            AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Connexion.fxml"));
+            scene.setRoot(root);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

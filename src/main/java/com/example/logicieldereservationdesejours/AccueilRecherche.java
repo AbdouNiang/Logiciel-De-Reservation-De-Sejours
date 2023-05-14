@@ -1,6 +1,5 @@
 package com.example.logicieldereservationdesejours;
 
-import com.example.logicieldereservationdesejours.controllers.SearchController;
 import com.example.logicieldereservationdesejours.models.Voyage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -74,9 +73,6 @@ public class AccueilRecherche implements Initializable {
 
             SearchController searchController = (SearchController)fxmlLoader.getController();
             listVoyagesResults = searchVoyagesResults();
-            //System.out.println(listAllVoyages);
-            //controller.setListVoyages(listVoyagesResults);
-            //controller.init();
             searchController.setListAllVoyages(listAllVoyages);
             searchController.setListVoyagesResults(listVoyagesResults);
             searchController.settxtRecherche2(txtRecherche);
@@ -115,7 +111,7 @@ public class AccueilRecherche implements Initializable {
                         values[8],
                         values[9]
                 );
-                System.out.println(voyage);
+                //System.out.println(voyage);
                 voyages.add(voyage);
             }
         } catch (IOException e) {

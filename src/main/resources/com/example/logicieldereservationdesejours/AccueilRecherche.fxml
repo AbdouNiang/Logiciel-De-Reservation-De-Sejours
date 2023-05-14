@@ -4,6 +4,8 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -24,7 +26,7 @@
                 <TextField fx:id="txtRecherche" layoutX="52.0" layoutY="32.0" prefHeight="25.0" prefWidth="232.0" promptText="Destination, contrepartie, logement ..." />
                 <Text fx:id="txtWarning" fill="RED" layoutX="52.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez saisir au moins 2 caractères" visible="false" wrappingWidth="249.13671875" />
             </children></Pane>
-        <Label layoutX="334.0" layoutY="119.0" prefHeight="87.0" prefWidth="752.0" text="La plateforme d'échange et de volontariat nomade">
+        <Label layoutX="458.0" layoutY="119.0" prefHeight="87.0" prefWidth="373.0" text=" Bienvenue Dans la Téranga Hotel">
             <font>
                 <Font size="24.0" />
             </font>
@@ -34,5 +36,25 @@
          <font>
             <Font size="13.0" />
          </font></Button>
+      <ImageView fitHeight="182.0" fitWidth="309.0" layoutX="185.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="https://static.service-voyages.com/photos/vacances-senegal/dakar/facade-le-saly-hotel_480603_pgbighd.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="182.0" fitWidth="288.0" layoutX="504.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="https://static.service-voyages.com/photos/vacances-senegal/dakar/chambre-le-saly-hotel_480591_pgbighd.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="182.0" fitWidth="299.0" layoutX="820.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="https://static.service-voyages.com/photos/vacances-senegal/dakar/spa-le-saly-hotel_480599_pgbighd.jpg/photos/vacances-senegal/dakar/chambre-le-saly-hotel_480591_pgbighd.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="55.0" fitWidth="105.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/logo.PNG" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

@@ -34,6 +34,9 @@ public class Voyage {
     @CsvBindByPosition(position = 9)
     private String dateDepart;
 
+    @CsvBindByPosition(position = 10)
+    private String titre;
+
     public String getVille() {
         return ville;
     }
@@ -72,6 +75,13 @@ public class Voyage {
 
     public String getDateDepart() {
         return dateDepart;
+    }
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
     }
 
 

@@ -5,24 +5,22 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.RadioMenuItem?>
-
-<?import javafx.scene.text.Text?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.logicieldereservationdesejours.controllers.SearchController">
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.logicieldereservationdesejours.SearchController">
     <children>
         <Pane fx:id="contact" layoutY="664.0" prefHeight="50.0" prefWidth="1280.0" style="-fx-border-color: black;" styleClass="-fx-border-color" AnchorPane.bottomAnchor="0.0">
             <children>
-                <Label layoutX="14.0" layoutY="15.0" text="Contact : adeona@woofing.fr" />
+                <Label layoutX="14.0" layoutY="15.0" text="Contact : @niang.fr" />
             </children>
         </Pane>
         <Button fx:id="hote" layoutX="1064.0" layoutY="26.0" mnemonicParsing="false" text="Devenir hôte" />
@@ -36,17 +34,18 @@
             </children></Pane>
         <HBox layoutX="19.0" layoutY="161.0" prefHeight="50.0" prefWidth="1242.0" spacing="20.0">
             <children>
-                <MenuButton accessibleRole="CHECK_MENU_ITEM" mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" text="Contreparties">
+                <MenuButton fx:id="menuContreparties" accessibleRole="CHECK_MENU_ITEM" mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" text="Contreparties">
                     <items>
                         <CheckMenuItem mnemonicParsing="false" text="Bricolage" />
                         <CheckMenuItem mnemonicParsing="false" text="Blanchissage" />
                         <CheckMenuItem mnemonicParsing="false" text="Jardinage" />
                         <CheckMenuItem mnemonicParsing="false" text="Babbysitting" />
-                        <CheckMenuItem mnemonicParsing="false" text="Cours d' anglais" />
+                        <CheckMenuItem mnemonicParsing="false" text="Cours d'anglais" />
                         <CheckMenuItem mnemonicParsing="false" text="Promener les chiens" />
                     </items>
                 </MenuButton>
-                <MenuButton mnemonicParsing="false" prefWidth="190.0" text="Heures/j">
+
+                <MenuButton fx:id="menuHeures" mnemonicParsing="false" prefWidth="190.0" text="Heures/j">
                     <items>
                         <CheckMenuItem mnemonicParsing="false" text="2" />
                         <CheckMenuItem mnemonicParsing="false" text="3" />
@@ -55,28 +54,32 @@
                         <CheckMenuItem mnemonicParsing="false" text="6" />
                     </items>
                 </MenuButton>
-                <MenuButton mnemonicParsing="false" prefWidth="190.0" text="Type de logement">
+
+                <MenuButton fx:id="menuTypeLogement" mnemonicParsing="false" prefWidth="190.0" text="Type de logement">
                     <items>
                         <CheckMenuItem mnemonicParsing="false" text="Chambre" />
                         <CheckMenuItem mnemonicParsing="false" text="Tente" />
                         <CheckMenuItem mnemonicParsing="false" text="Cabane" />
                     </items>
                 </MenuButton>
-                <MenuButton mnemonicParsing="false" prefWidth="190.0" text="Voyageurs">
+
+                <MenuButton fx:id="menuVoyageurs" mnemonicParsing="false" prefWidth="190.0" text="Voyageurs">
                     <items>
                         <RadioMenuItem mnemonicParsing="false" text="1" />
                         <RadioMenuItem mnemonicParsing="false" text="2" />
                         <RadioMenuItem mnemonicParsing="false" text="3" />
                     </items>
                 </MenuButton>
-                <MenuButton mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" text="Restauration">
+
+                <MenuButton fx:id="menuRestauration" mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" text="Restauration">
                     <items>
                         <CheckMenuItem mnemonicParsing="false" text="Pension complète" />
                         <CheckMenuItem mnemonicParsing="false" text="Demi pension" />
                         <CheckMenuItem mnemonicParsing="false" text="Petit déjeuner" />
                     </items>
                 </MenuButton>
-                <MenuButton mnemonicParsing="false" prefWidth="190.0" text="Autres options">
+
+                <MenuButton fx:id="menuAutresOptions" mnemonicParsing="false" prefWidth="190.0" text="Autres options">
                     <items>
                         <CheckMenuItem mnemonicParsing="false" text="Transfert" />
                         <CheckMenuItem mnemonicParsing="false" text="Wifi" />
@@ -98,8 +101,10 @@
             </children>
         </HBox>
         <ImageView fx:id="imgMap" fitHeight="433.0" fitWidth="620.0" layoutX="640.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true" />
-        <ScrollPane fx:id="paneResults" hbarPolicy="NEVER" layoutX="20.0" layoutY="237.0" prefHeight="433.0" prefWidth="620.0" vbarPolicy="NEVER">
-            <VBox fx:id="tripListView" layoutX="14.0" layoutY="14.0" prefHeight="460.0" prefWidth="616.0" />
+        <ScrollPane fx:id="paneResults" hbarPolicy="ALWAYS" layoutX="20.0" layoutY="237.0" prefHeight="433.0" prefWidth="620.0" vbarPolicy="ALWAYS">
+            <content>
+                <VBox fx:id="tripListView" layoutX="14.0" layoutY="14.0" prefHeight="410.0" prefWidth="606.0" />
+            </content>
         </ScrollPane>
         <Button fx:id="bouton_accueil" layoutX="56.0" layoutY="69.0" mnemonicParsing="false" onAction="#goToAccueil" text="Accueil" />
     </children>
